@@ -2,15 +2,14 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# -----------------------------
+
 # Load trained model and features
-# -----------------------------
+
 model = joblib.load("fraud_model_resampled.pkl")
 features = joblib.load("model_resampled_features.pkl")
 
-# -----------------------------
 # Streamlit Page Setup
-# -----------------------------
+
 st.set_page_config(
     page_title="NovaPay Fraud Detection",
     layout="centered"
@@ -21,9 +20,9 @@ st.write("Enter transaction details to check if the transaction is fraudulent.")
 
 st.divider()
 
-# -----------------------------
+
 # User Inputs
-# -----------------------------
+
 amount = st.number_input(
     "Transaction Amount",
     min_value=0.0,
@@ -58,9 +57,9 @@ merchant_risk = st.slider(
 
 st.divider()
 
-# -----------------------------
+
 # Prepare Input Data
-# -----------------------------
+
 input_data = pd.DataFrame({
     'amount': [amount],
     'hour': [hour],
@@ -72,9 +71,9 @@ input_data = pd.DataFrame({
 # Align with training features (fixes fragmentation warning)
 input_data = input_data.reindex(columns=features, fill_value=0)
 
-# -----------------------------
+
 # Prediction
-# -----------------------------
+
 if st.button("Predict Fraud"):
 
     prediction = model.predict(input_data)[0]
