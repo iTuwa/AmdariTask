@@ -13,11 +13,10 @@ features = joblib.load("model_resampled_features.pkl")
 # -----------------------------
 st.set_page_config(
     page_title="NovaPay Fraud Detection",
-    page_icon="💳",
     layout="centered"
 )
 
-st.title("💳 NovaPay Fraud Detection System")
+st.title(" NovaPay Fraud Detection System")
 st.write("Enter transaction details to check if the transaction is fraudulent.")
 
 st.divider()
@@ -76,7 +75,7 @@ input_data = input_data.reindex(columns=features, fill_value=0)
 # -----------------------------
 # Prediction
 # -----------------------------
-if st.button("🔍 Predict Fraud"):
+if st.button("Predict Fraud"):
 
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1]
@@ -84,9 +83,9 @@ if st.button("🔍 Predict Fraud"):
     st.subheader("Prediction Result")
 
     if prediction == 1:
-        st.error("⚠ Fraudulent Transaction Detected")
+        st.error("Fraudulent Transaction Detected")
     else:
-        st.success("✅ Legitimate Transaction")
+        st.success("Legitimate Transaction")
 
     st.metric(
         label="Fraud Probability",
