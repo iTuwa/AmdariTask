@@ -5,8 +5,8 @@ import joblib
 # -----------------------------
 # Load trained model and features
 # -----------------------------
-model = joblib.load("fraud_model.pkl")
-features = joblib.load("model_features.pkl")
+model = joblib.load("fraud_model_resampled.pkl")
+features = joblib.load("model_resampled_features.pkl")
 
 # -----------------------------
 # Streamlit Page Setup
